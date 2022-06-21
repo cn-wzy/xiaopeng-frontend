@@ -11,6 +11,13 @@ export default {
   name: 'App',
   components: {
     Header
+  },
+  mounted() {
+    window.setInterval(()=> {
+      setTimeout(async () => {
+        await this.$store.dispatch('dataUpload')
+      }, 0)
+    }, 200000)
   }
 }
 </script>

@@ -1,7 +1,14 @@
 <template>
   <div class="home-wrap">
-    <div class="login-icon"><p>登录界面</p>
-    <img src="../assets/xiaopeng.png" width="40px" height="40px" class="icon-img"></div>
+    <div class="login-icon">
+      <p>登录界面</p>
+      <img
+        src="../assets/xiaopeng.png"
+        width="40px"
+        height="40px"
+        class="icon-img"
+      />
+    </div>
     <div class="login_box">
       <el-form
         ref="loginFormRef"
@@ -37,15 +44,14 @@
 </template>
 
 <script>
-import requests from '../api/index.js'
 export default {
   name: "Login",
   data() {
     return {
       loginForm: {
-        carId: '',
-        username: "",
-        password: "",
+        // carId: "",
+        username: "zhangsan",
+        password: "password",
       },
       loginFormRules: {
         username: [
@@ -70,23 +76,22 @@ export default {
     };
   },
   methods: {
-      toRegister() {
-          this.$router.push('/register')
-      },
-      async login() {
-        let result = await requests({
-          url: "/login",
-          method: "post",
-          data: this.loginForm,
-          });
-          if (result.code === 200){
-            this.$router.push('/home')
-          } else {
-            this.$message.error(result.msg)
-          }
-          
-      }
-  }
+    toRegister() {
+      this.$router.push("/register");
+    },
+    async login() {
+      // reqUserLogin(this.loginForm).then(res => {
+      //   if (res.code === 200) {
+      //     console.log(1);
+      //   }
+      // });
+
+      const { username, password } = this.loginForm;
+      await this.$store.dispatch("setUserInfo", { username, password });
+      await this.$store.dispatch('dataUpload')
+      this.$router.push("/home");
+    },
+  },
 };
 </script>
 
@@ -119,9 +124,9 @@ export default {
   color: #6fbce8;
 }
 .icon-img {
-    position: absolute;
-    left: 150px;
-    top: 42px;
+  position: absolute;
+  left: 150px;
+  top: 42px;
 }
 .btns {
   display: flex;
@@ -133,14 +138,14 @@ export default {
   border-radius: 100px;
   font-size: 30px;
 }
- /deep/ .el-input__inner {
+/deep/ .el-input__inner {
   /*或者 .s2>>>.el-input__inner  */ /*调整inner的背景色，透明*/ /*调整inner的高度*/
   border-radius: 100px;
   height: 75px;
   width: 476px;
   margin-top: 30px;
   font-size: 40px;
-  background-color: #EFEDED;
+  background-color: #efeded;
 }
 .login_form {
   position: absolute;
