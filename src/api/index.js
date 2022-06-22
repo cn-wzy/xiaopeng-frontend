@@ -16,3 +16,5 @@ export const reqDataUpload = (data) =>
 
 export const reqCarInfo = (carId) =>
   requests({ url: `/car/check/${carId}`, method: "get" });
+
+export const reqErrorHandle = (carId, exceptionId, handleId) => requests({url: `defect/handle/${carId}/${exceptionId}/${handleId}`})

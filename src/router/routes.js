@@ -45,7 +45,7 @@ export default [
     component: NotSeverity
   },
   {
-    path: "/fix/1",
+    path: "/fix/3",
     component: Fixone
   },
   {
@@ -53,7 +53,7 @@ export default [
     component: Fixtwo
   },
   {
-    path: "/fix/3",
+    path: "/fix/5",
     component: Fixthree
   },
   {

@@ -84,6 +84,20 @@ export default {
   mounted() {
     this.$store.dispatch("getCarInfo");
     this.getEchartLoad();
+    let timer = setInterval(()=> {
+      setTimeout(async () => {
+        await this.$store.dispatch('dataUpload' )
+        if (this.$store.state.car.carError.code === 1) {
+          this.$router.push('/notSeverity')
+          clearInterval(timer)
+        } else if (this.$store.state.car.carError.code === 2) {
+          this.$router.push('/severity')
+          clearInterval(timer)
+        } else {
+          this.$router.push('/')
+        }
+      }, 0)
+    }, 5000)
   },
   methods: {
     wheelHandle() {

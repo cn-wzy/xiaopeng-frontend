@@ -4,20 +4,16 @@
     处理方案
     <div class="crash-box">
       <div class="button1-box">
-        <button class="button-ex" onClick="alert(1)">方案一</button>
+        <button class="button-ex" @click="solution(0)">方案一</button>
       </div>
       <div class="button2-box">
-        <button class="button-ex">方案二</button>
+        <button class="button-ex" @click="solution(1)">方案二</button>
       </div>
       <div class="button3-box">
-        <button class="button-ex">方案三</button>
+        <button class="button-ex" @click="solution(2)">方案三</button>
       </div>
       <div class="article-ex">
-        浏览器同源策略限制请求同源是指"协议+域名+端口"三者相同，即便两个不同的域名指向同一个ip地址，也非同源。限制以下行为
-        Cookie、LocalStorage 和 IndexDB 无法读取 DOM 和Js对象无法获 AJAX
-        请求不能发送
-        作者：GhostFJ链接：https://juejin.cn/post/7088144745788080142
-        来源：稀土掘金著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+        {{this.desc}}
       </div>
     </div>
   </div>
@@ -27,15 +23,15 @@
 export default {
   data() {
     return {
-      circleUrl:
-        "https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fc-ssl.duitang.com%2Fuploads%2Fblog%2F202107%2F17%2F20210717232533_2edcf.thumb.1000_0.jpg&refer=http%3A%2F%2Fc-ssl.duitang.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=auto?sec=1656864226&t=b493190a44e065bee31789d33a7c1b2b",
-      subCircleUrl:
-        "https://gimg2.baidu.com/image_search/src=http%3A%2F%2Finews.gtimg.com%2Fnewsapp_bt%2F0%2F14182013103%2F1000&refer=http%3A%2F%2Finews.gtimg.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=auto?sec=1657973210&t=18af0ec7d59a13ed15ca43b2677e02e9",
-      workPhoneNum: "13123444777",
-      value: 3.7,
-      value1: [],
+      desc: ""
     };
   },
+  methods: {
+    solution(num) {
+      this.desc = this.$store.state.error.errSolution[num].desc
+      console.log(this.desc);
+    }
+  }
 };
 </script>
 

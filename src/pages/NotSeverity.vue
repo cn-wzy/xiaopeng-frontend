@@ -1,9 +1,9 @@
 <template>
   <div class="home-wrap">
     <div class="button-box">
-      <el-button type="warning" @click="handleClick(1)">前往维修厂</el-button>
+      <el-button type="warning" @click="handleClick(3)">前往维修厂</el-button>
       <el-button type="danger" @click="handleClick(2)">现场维修</el-button>
-      <el-button type="primary" @click="handleClick(3)">自行解决</el-button>
+      <el-button type="primary" @click="handleClick(5)">自行解决</el-button>
     </div>
   </div>
 </template>
@@ -11,7 +11,8 @@
 <script>
 export default {
   methods: {
-    handleClick(num) {
+    async handleClick(num) {
+      await this.$store.dispatch('errorHandle', num)
       this.$router.push(`/fix/${num}`);
     }
   }

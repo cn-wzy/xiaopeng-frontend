@@ -1,15 +1,21 @@
 <template>
   <div class="home-wrap">
     <div class="button-box">
-      <el-button type="warning">应急方案</el-button>
-      <el-button type="danger">自救方案</el-button>
-      <el-button type="primary">保险流程</el-button>
+      <el-button type="warning" @click="errorHandler(0)">应急方案</el-button>
+      <el-button type="danger" @click="errorHandler(1)">自救方案</el-button>
+      <el-button type="primary" @click="errorHandler(2)">保险流程</el-button>
     </div>
   </div>
 </template>
 
 <script>
-export default {};
+export default {
+  methods: {
+    errorHandler(handleId) {
+      this.$store.dispatch('errorHandle', handleId);
+    }
+  }
+};
 </script>
 
 <style scoped>
