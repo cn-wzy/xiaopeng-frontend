@@ -1,6 +1,6 @@
 <template>
   <div class="home-wrap">
-    <el-button size="mini" round>←</el-button>
+    <el-button size="mini" round @click="back()">←</el-button>
     处理方案
     <div class="crash-box">
       <div class="button1-box">
@@ -30,6 +30,9 @@ export default {
     solution(num) {
       this.desc = this.$store.state.error.errSolution[num].desc
       console.log(this.desc);
+    },
+    back() {
+      this.$router.back()
     }
   }
 };
@@ -108,14 +111,10 @@ export default {
   float: right;
   margin-top: 45px;
   margin-right: 80px;
-  font-size: 20px;
-  font-weight: 500;
+  font-size: 40px;
+  font-weight: 1000;
   width: 500px;
   height: 500px;
   overflow: hidden;
-  text-overflow: ellipsis;
-  display: -webkit-box;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
 }
 </style>

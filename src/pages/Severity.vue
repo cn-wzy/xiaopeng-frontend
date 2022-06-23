@@ -4,7 +4,9 @@
     <div class="home-wrap">
       <el-button class="policePhone">
         <div><img src="../assets/phone.png" alt="" width="50px"></div>
-        <span style="color: #89B843">110</span>
+        <span style="color: #89B843">
+          <a href="tel:15916271234" style="color: #89B843">110</a>
+        </span>
       </el-button>
       <div class="crashBox">
         <div class="crashInfo">
