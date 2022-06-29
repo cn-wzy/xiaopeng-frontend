@@ -11,7 +11,8 @@ const state = {
   endPoint: {
     longitude: 113.37443,
     latitude: 23.0902
-  }
+  },
+  worker: {}
 };
 
 const actions = {
@@ -23,6 +24,8 @@ const actions = {
             commit("ERRORHANDLE5", result.data.data);
         } else if (handleId === 3) {
             commit("ERRORHANDLE3", result.data.data)
+        } else if (handleId === 4) {
+          commit("ERRORHANDLE4", result.data.data)
         }
       
     } else {
@@ -31,7 +34,7 @@ const actions = {
   },
   chooseEndPoint({commit}, position) {
     commit("CHOOSEENDPOINT", position)
-  }
+  },
 };
 
 const mutations = {
@@ -40,6 +43,9 @@ const mutations = {
   },
   ERRORHANDLE3(state, data) {
     state.endPointList = data;
+  },
+  ERRORHANDLE4(state, data) {
+    state.worker = data[0]
   },
   CHOOSEENDPOINT(state, data) {
     state.endPoint = data.pos

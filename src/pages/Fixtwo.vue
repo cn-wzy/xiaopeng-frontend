@@ -37,18 +37,18 @@
               :src="subCircleUrl"
               :size="25"
             ></el-avatar>
-            <span class="worker-avatar">xxx</span>
+            <span class="worker-avatar">{{worker.name}}</span>
           </div>
         </div>
         <div class="phone-info">
           <el-button circle size="mini" class="phone-info-icon">
             <div><img src="../assets/phone.png" alt="" width="30px" /></div>
           </el-button>
-          <span class="phone-info-num">{{ this.workPhoneNum }}</span>
+          <span class="phone-info-num">{{ worker.phoneNumber }}</span>
         </div>
         <div class="starbox">
           <el-rate
-            v-model="value"
+            v-model="worker.star"
             disabled
             show-score
             text-color="#ff9900"
@@ -56,7 +56,7 @@
           >
           </el-rate>
         </div>
-        <div class="worker-info">擅长xxx，xxx，xxx，好评无数......</div>
+        <div class="worker-info">{{worker.desc}}</div>
       </div>
     </div>
   </div>
@@ -70,11 +70,17 @@ export default {
         "https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fc-ssl.duitang.com%2Fuploads%2Fblog%2F202107%2F17%2F20210717232533_2edcf.thumb.1000_0.jpg&refer=http%3A%2F%2Fc-ssl.duitang.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=auto?sec=1656864226&t=b493190a44e065bee31789d33a7c1b2b",
       subCircleUrl:
         "https://gimg2.baidu.com/image_search/src=http%3A%2F%2Finews.gtimg.com%2Fnewsapp_bt%2F0%2F14182013103%2F1000&refer=http%3A%2F%2Finews.gtimg.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=auto?sec=1657973210&t=18af0ec7d59a13ed15ca43b2677e02e9",
-      workPhoneNum: "13123444777",
-      value: 3.7,
-      value1: [],
+      value1: ""
     };
   },
+  mounted() {
+    this.$store.dispatch('errorHandle', 4)
+  },
+  computed:{
+    worker() {
+      return this.$store.state.error.worker
+    }
+  }
 };
 </script>
 
@@ -154,7 +160,7 @@ export default {
 .phone-info-num {
   position: absolute;
   left: 70px;
-  top: 110px;
+  top: -140px;
   font-size: 30px;
   font-weight: bold;
   margin-top: 270px;
